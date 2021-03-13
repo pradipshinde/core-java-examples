@@ -27,7 +27,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
 	/**
 	 * This method will insert data into LinkedList at beginning if list is not
-	 * empty
+	 * empty O(1)
 	 * 
 	 * @param node
 	 */
@@ -38,23 +38,21 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
 	/**
 	 * This method will insert data into LinkedList at last position if list is not
-	 * empty
+	 * empty O(N)
 	 * 
 	 * @param data
 	 */
 	public void insertDataAtEnd(T data) {
+		size++;
 		Node<T> node = new Node<>(data);
 		if (head == null) {
 			head = node;
 		} else {
-			Node<T> temp = head;
-			while (temp != null) {
-				if( temp.getNextNode()==null) {
-					temp.setNextNode(node);
-				}
-				temp = temp.getNextNode();
+			Node<T> temp=head;
+			while (temp.getNextNode() != null) {
+				temp=temp.getNextNode() ;
 			}
-		
+			temp.setNextNode(node);
 		}
 
 	}
